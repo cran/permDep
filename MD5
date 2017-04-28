@@ -1,0 +1,11 @@
+f439b495b8c8f9ab0bd5799fb537b38b *DESCRIPTION
+05cf6b1f8fd0a0d371302ade5bd3cbe5 *NAMESPACE
+77a643d8979e82a28e647473794ba7b4 *R/GPD.R
+50cf36bdc0a4b37a1e0e0823069188de *R/depTrun.R
+8fa6cf750c2f17f1199a0b3870e18b41 *R/gevFit.R
+b90419bcd0937fea08ee6b80e6b67994 *R/summary.R
+1ed78410e42f3fa052f953951ac46cb0 *man/permDep-package.Rd
+1db6f4ab087bcaf4a7e79df988b18697 *man/permDep.Rd
+48cc3220c1479187e6bb9986ba45397b *src/agfit4.c
+8d83a10acabc27d681dc579a11ec2e40 *src/permTest.c
+7c22b1b500cab25872924e218f1645f5 *src/permTest_init.c
