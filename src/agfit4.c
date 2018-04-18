@@ -218,10 +218,12 @@ SEXP agfit4(SEXP surv2,      SEXP covar2,    SEXP strata2,
     **  covar2 might not need to be duplicated, even though
     **  we are going to modify it, due to the way this routine was
     **  was called.  In this case NAMED(covar2) will =0
+    **  Changed NAMED(covar2) to MAYBE_REFERENCED(covar2) on 04/17/2018 
+    **  as suggested by Tomas Kalibera
     */
     PROTECT(imat2 = allocVector(REALSXP, nvar*nvar));
     nprotect =1;
-    if (NAMED(covar2)>0) {
+    if (MAYBE_REFERENCED(covar2)>0) {
         PROTECT(covar2 = duplicate(covar2)); 
         nprotect++;
         }

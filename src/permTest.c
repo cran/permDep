@@ -34,8 +34,8 @@ void kendallTrun(double *x, double *y, double *Delta, int *n,
   double tmp;
   for (i = 0; i < (*n - 1); i++) {
     for (j = i + 1; j < *n; j++) {
-      //      if (fmax(x[i], x[j]) <= fmin(y[i], y[j]) & Delta[i] * Delta[j] + Delta[i] * (y[i] < y[j]) + Delta[j] * (y[j] < y[i]) > 0) {
-      if (fmax(x[i], x[j]) <= fmin(y[i], y[j]) & Delta[i] *  Delta[j] + Delta[i] * (y[i] <= y[j]) + Delta[j] * (y[j] <= y[i]) > 0) {
+      if (fmax(x[i], x[j]) <= fmin(y[i], y[j]) &&
+	  Delta[i] *  Delta[j] + Delta[i] * (y[i] <= y[j]) + Delta[j] * (y[j] <= y[i]) > 0) {
 	tmp = (y[i] - y[j]) * (x[i] - x[j]);
 	h12 += (tmp > 0) - (tmp < 0);
 	bb[i * (*n - 1) + j - 1] = ((tmp > 0) - (tmp < 0)) / sqrt((*n - 1) * (*n - 2));
@@ -118,8 +118,9 @@ void kendallTrunWgt(double *x, double *y, double *Delta, int *n, double *scX, do
   double wgt;
   for (i = 0; i < (*n - 1); i++) {
     for (j = i + 1; j < *n; j++) {
-      //      if (fmax(x[i], x[j]) <= fmin(y[i], y[j]) & Delta[i] * Delta[j] + Delta[i] * (y[i] < y[j]) + Delta[j] * (y[j] < y[i]) > 0) {
-      if (fmax(x[i], x[j]) <= fmin(y[i], y[j]) & Delta[i] *  Delta[j] + Delta[i] * (y[i] <= y[j]) + Delta[j] * (y[j] <= y[i]) > 0 & scX[i] * scX[j] * scT[i] * scT[j] > 0) {
+      if (fmax(x[i], x[j]) <= fmin(y[i], y[j]) &&
+	  Delta[i] *  Delta[j] + Delta[i] * (y[i] <= y[j]) + Delta[j] * (y[j] <= y[i]) > 0 &&
+	  scX[i] * scX[j] * scT[i] * scT[j] > 0) {
 	wgt = scX[i] * scX[j] / (scT[i] * scT[j]);
 	tmp = (y[i] - y[j]) * (x[i] - x[j]);
 	h12 += ((tmp > 0) - (tmp < 0)) / wgt;
